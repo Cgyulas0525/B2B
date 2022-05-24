@@ -248,7 +248,7 @@ return [
         'ddwClass' => App\Classes\ddwClass::class,
         'adminClass' => App\Classes\adminClass::class,
         'shoppingCartClass' => App\Classes\shoppingCartClass::class,
-        'productPriceClass' => App\Http\Controllers\ProductPriceClassController::class,
+        'productPriceClass' => App\Classes\productPriceClass::class,
         'dashboardClass' => App\Classes\dashboardClass::class,
         'excelImportClass' => App\Classes\excelImportClass::class,
 

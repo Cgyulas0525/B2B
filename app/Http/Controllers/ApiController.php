@@ -287,11 +287,15 @@ class ApiController extends Controller
     {
 
         $product      = Product::find($request->get('Product'));
-        $productPrice = productPriceClass::getProductPrice($product->Id);
-        $vat          = Vat::where( 'Id', $product->Vat)->where('Deleted', 0)->first();
         $quantity     = $request->get('Quantity');
-        DB::table('ShoppingCartDetail')
-            ->insert([
+        $productPrice = productPriceClass::getProductPrice($product->Id, $quantity, $product->QuantityUnit);
+        $vat          = Vat::where( 'Id', $product->Vat)->where('Deleted', 0)->first();
+
+        $netValue = $quantity * $productPrice;
+        $vatValue = $netValue * ( $vat->Rate / 100 );
+
+        $newShoppingCartDetail = DB::table('ShoppingCartDetail')
+            ->insertGetId([
                 'ShoppingCart' => $request->get('Id'),
                 'Currency'     => -1,
                 'CurrencyRate' => 1,
@@ -299,14 +303,15 @@ class ApiController extends Controller
                 'Vat'          => $product->Vat,
                 'QuantityUnit' => $product->QuantityUnit,
                 'Quantity'     => $quantity,
-                'UnitPrice'    => $productPrice->Price,
-                'NetValue'     => $quantity * $productPrice->Price,
-                'VatValue'     => $quantity * ( $productPrice->Price * ( $vat->Rate / 100 )),
-                'GrossValue'   => ( $quantity * $productPrice->Price ) + ( $quantity * ( $productPrice->Price * ( $vat->Rate / 100 ))),
+                'UnitPrice'    => $productPrice,
+                'NetValue'     => $netValue,
+                'VatValue'     => $vatValue,
+                'GrossValue'   => $netValue + $vatValue,
                 'created_at'   => \Carbon\Carbon::now()
             ]);
 
-        $newShoppingCartDetail = ShoppingCartDetail::where('ShoppingCart', $request->get('Id'))->where('Product', $request->get('Product'))->first();
+
+        $newShoppingCartDetail = ShoppingCartDetail::find($newShoppingCartDetail);
         $shoppingCart          = ShoppingCart::find($request->get('Id'));
 
         DB::table('ShoppingCart')
@@ -360,11 +365,13 @@ class ApiController extends Controller
                     ->first();
             })->first();
             if (!empty($product)) {
-                $productPrice = productPriceClass::getProductPrice($product->Id);
+                $quantity     = floatval($request->get('quantity'));
+                $productPrice = productPriceClass::getProductPrice($product->Id, $quantity, $product->QuantityUnit);
                 $shoppingCart = shoppingCartClass::openedShoppingCart(myUser::user()->customercontact_id);
                 $vat          = Vat::find($product->Vat);
 
-                $quantity     = floatval($request->get('quantity'));
+                $netValue = $quantity * $productPrice;
+                $vatValue = $netValue * (( 100 + $vat->Rate) / 100);
 
                 $scdId = DB::table('ShoppingCartDetail')
                     ->insertGetId([
@@ -376,10 +383,10 @@ class ApiController extends Controller
                         'QuantityUnit' => $product->QuantityUnit,
                         'Reverse' => 0,
                         'Quantity' => $quantity,
-                        'UnitPrice' => $productPrice->Price,
-                        'NetValue' => $quantity * $productPrice->Price,
-                        'GrossValue' => ($quantity * $productPrice->Price) + ($quantity * $productPrice->Price) * (( 100 + $vat->Rate) / 100),
-                        'VatValue' => ($quantity * $productPrice->Price) * (( 100 + $vat->Rate) / 100),
+                        'UnitPrice' => $productPrice,
+                        'NetValue' => $netValue,
+                        'GrossValue' => $netValue + $vatValue,
+                        'VatValue' => $vatValue,
                         'created_at' => \Carbon\Carbon::now()
                     ]);
                 logClass::insertDeleteRecord( 1, "ShoppingCartDetail", $scdId);

@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Database.php';
+require_once 'Utility.php';
 
 class ModelChange {
 
@@ -201,7 +202,7 @@ class ModelChange {
         self::$castsArray[count(self::$castsArray) - 1] = substr(self::$castsArray[count(self::$castsArray) - 1], 0, iconv_strpos(self::$castsArray[count(self::$castsArray) - 1], "\n", 0)) . ','."\n";
         array_push(self::$castsArray, $newFieldCasts);
 
-        $smtp = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = LOWER( '" . $item['table']. "') AND TABLE_SCHEMA= '" . DB_NAME ."'";
+        $smtp = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = LOWER( '" . $item['table']. "') AND TABLE_SCHEMA= '" . Utility::envLoader('DB_DATABASE') ."'";
         $results = DB::run($smtp);
 
         $changing = true;
@@ -220,4 +221,21 @@ class ModelChange {
             DB::run($smtp);
         }
     }
+
+    public static function modelFillArray($scCastArray, $row)
+    {
+        $string = NULL;
+        for ( $i = 0; $i < count($scCastArray); $i++ ) {
+            $field = ltrim(substr($scCastArray[$i], 0, strpos($scCastArray[$i], "=>") - 1));
+            $value = $row[substr($field, 1, strlen($field) - 2)];
+            if ( $i < count($scCastArray) - 1 ) {
+                $string = $string . $field . " => " . $value . ",";
+            } else {
+                $string = $string . $field . " => " . $value;
+            }
+        };
+        return array($string);
+
+    }
+
 }

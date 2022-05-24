@@ -89,6 +89,11 @@
                     {title: 'Termék csoport', data: 'ProductCategoryName', width: '150px', name: 'ProductCategoryName'},
                     {title: 'Me.egys', data: 'QuantityUnitName', name: 'QuantityUnitName'},
                     {title: 'Vonalkód', data: 'Barcode', name: 'Barcode'},
+                    {title: '', data: "Id",
+                        "render": function ( data, type, row, meta ) {
+                            return '<button value="'+ data +'" onclick="favoriteProduct('+meta["row"]+', this.value)"><i class="fas fa-heart"></i></button>'
+                        }
+                    }
                 ],
                 columnDefs: [
                     {
@@ -125,7 +130,7 @@
             });
 
             $('.mind').click(function () {
-                $('#fejszoveg').text('Minden termékek');
+                $('#fejszoveg').text('Minden termék');
                 let url = '{{ route('productIndex') }}';
                 table.ajax.url(url).load();
             });
@@ -159,7 +164,7 @@
                             $('#brutto').text(custom_number_format(response.GrossValue, 4, ',', '.'));
                         },
                         error: function (response) {
-                            // console.log('Error:', response);
+                            console.log('Error:', response);
                             alert('nem ok');
                         }
                     });
@@ -211,6 +216,11 @@
             }
             d.Quantity = value;
             table.row(Row).invalidate();
+        }
+
+        function favoriteProduct(Row, value){
+            var d = table.row(Row).data();
+            alert(d.Id);
         }
 
 

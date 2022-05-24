@@ -25,13 +25,12 @@ foreach ( $files as $file ) {
                 if (count($castsArray) > count($fieldArray)) {
                     echo $item['table'] . " ". count($castsArray) . " " . count($fieldArray) . "\n";
                 }
-                // van e mező méret változás
-                // mezoMeretVealtoztatas()
             }
         }
     }
     Utility::fileUnlink($path.$file);
     Utility::fileUnlink($path.$xmlFile);
-
 }
+
+Utility::httpPost($path, "OK");
 
