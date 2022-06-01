@@ -15,6 +15,13 @@
 {{--            </a>--}}
 {{--        </li>--}}
         <li class="nav-item">
+            <a href="{{ route('customerContactFavoriteProducts.index') }}"
+               class="nav-link {{ Request::is('customerContactFavoriteProducts*') ? 'active' : '' }}">
+                <i class="fas fa-heart"></i>
+                <p>Kedvenc termékek ({{ \App\Models\CustomerContactFavoriteProduct::count() }}) </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{ route('editShoppingCart') }}"
                class="nav-link {{ Request::is('editShoppingCart*') ? 'active' : '' }}">
                 <i class="fas fa-cart-plus"></i>
@@ -91,3 +98,4 @@
 {{--        <p>Shopping Cart Details</p>--}}
 {{--    </a>--}}
 {{--</li>--}}
+

@@ -13,6 +13,7 @@ use App\Http\Controllers\CustomerOfferController;
 use App\Http\Controllers\LogItemController;
 use App\Http\Controllers\ShoppingCartDetailController;
 use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\CustomerContactFavoriteProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,9 +77,10 @@ Route::resource('shoppingCartDetails', App\Http\Controllers\ShoppingCartDetailCo
 //Route::get('index/{id}', [ShoppingCartDetailController::class, 'index'])->name('shoppingCartDetailIndex');
 Route::get('create/{id}', [ShoppingCartDetailController::class, 'create'])->name('shoppingCartDetailCreate');
 Route::get('destroy/{id}', [ShoppingCartDetailController::class, 'destroy'])->name('shoppingCartDetailDestroy');
-Route::get('productIndex}', [ShoppingCartDetailController::class, 'productIndex'])->name('productIndex');
-Route::get('customerOfferProductIndex}', [ShoppingCartDetailController::class, 'customerOfferProductIndex'])->name('customerOfferProductIndex');
-Route::get('customerContractProductIndex}', [ShoppingCartDetailController::class, 'customerContractProductIndex'])->name('customerContractProductIndex');
+Route::get('productIndex', [ShoppingCartDetailController::class, 'productIndex'])->name('productIndex');
+Route::get('customerOfferProductIndex', [ShoppingCartDetailController::class, 'customerOfferProductIndex'])->name('customerOfferProductIndex');
+Route::get('customerContractProductIndex', [ShoppingCartDetailController::class, 'customerContractProductIndex'])->name('customerContractProductIndex');
+Route::get('favoriteProductIndex', [ShoppingCartDetailController::class, 'favoriteProductIndex'])->name('favoriteProductIndex');
 
 Route::get('customerOrderDetailIndex/{id}', [CustomerOrderController::class, 'customerOrderDetailIndex'])->name('customerOrderDetailIndex');
 Route::get('indexAllThisYear', [CustomerOrderController::class, 'indexAllThisYear'])->name('indexAllThisYear');
@@ -93,3 +95,8 @@ Route::get('excelImport', [ShoppingCartController::class, 'excelImport'])->name(
 Route::post('excelBetolt', [ShoppingCartController::class, 'excelBetolt'])->name('excelBetolt');
 Route::get('excelIndex', [ShoppingCartController::class, 'excelIndex'])->name('excelIndex');
 Route::get('excelImportUseRecordsDelete', [ShoppingCartController::class, 'excelImportUseRecordsDelete'])->name('excelImportUseRecordsDelete');
+
+
+Route::resource('customerContactFavoriteProducts', App\Http\Controllers\CustomerContactFavoriteProductController::class);
+Route::get('productCategoryProductindex/{category}', [CustomerContactFavoriteProductController::class, 'productCategoryProductindex'])->name('productCategoryProductindex');
+Route::get('destroyMe/{id}', [CustomerContactFavoriteProductController::class, 'destroyMe'])->name('cCFPDestroyMe');

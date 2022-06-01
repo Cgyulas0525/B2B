@@ -10,6 +10,7 @@ use DB;
 use myUser;
 use shoppingCartClass;
 use productPriceClass;
+use logClass;
 
 use App\Models\Employee;
 use App\Models\Users;
@@ -429,6 +430,18 @@ class ApiController extends Controller
                                ->where('user_id', myUser::user()->id)
                                ->first());
         return !empty($ds) ? $ds : null;
+    }
+
+    public function makeCustomerContactFavoriteProduct(Request $request)
+    {
+        $scdId = DB::table('customercontactfavoriteproduct')
+            ->insertGetId([
+                'product_id'         => $request->get('product'),
+                'customercontact_id' => $request->get('customerContact'),
+                'created_at' => \Carbon\Carbon::now()
+            ]);
+        logClass::insertDeleteRecord( 1, "CustomerContactFavoriteProduct", $scdId);
+
     }
 
 }

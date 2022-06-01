@@ -108,8 +108,19 @@ class Users extends Model
         'B2BLoginCount',
         'CustomerAddressId',
         'CustomerAddressName',
-        'TransportModeName'
+        'TransportModeName',
+        'CustomerContactName'
     ];
+
+    public function getCustomerContactNameAttribute() {
+        if (!empty($this->employee_id)) {
+            $nev = DB::table('employee as t1')->find($this->employee_id)->Name;
+        }
+        if (!empty($this->customercontact_id)) {
+            $nev = DB::table('customercontact as t1')->find($this->customercontact_id)->Name;
+        }
+        return !empty($nev) ? $nev : ' ';
+    }
 
     public function getCustomerNameAttribute() {
         if (!empty($this->employee_id)) {

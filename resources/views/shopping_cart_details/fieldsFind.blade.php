@@ -29,8 +29,8 @@
                                 <div class="pull-left">
                                     <a href="#" class="btn btn-primary akcio" title="Akciós"><i class="fas fa-percent"></i></a>
                                     <a href="#" class="btn btn-success szerzodes" title="Szerződéses"><i class="fas fa-handshake"></i></a>
+                                    <a href="#" class="btn btn-danger kedvenc" title="Kedvencek"><i class="fas fa-heart"></i></a>
                                     <a href="#" class="btn btn-dark mind" title="Minden tétel"><i class="fas fa-warehouse"></i></a>
-{{--                                    <a href="#" class="btn btn-danger kosar" title="Kosár"><i class="fas fa-shopping-cart"></i></a>--}}
                                 </div>
                             </div>
                         </div>
@@ -89,11 +89,11 @@
                     {title: 'Termék csoport', data: 'ProductCategoryName', width: '150px', name: 'ProductCategoryName'},
                     {title: 'Me.egys', data: 'QuantityUnitName', name: 'QuantityUnitName'},
                     {title: 'Vonalkód', data: 'Barcode', name: 'Barcode'},
-                    {title: '', data: "Id",
-                        "render": function ( data, type, row, meta ) {
-                            return '<button value="'+ data +'" onclick="favoriteProduct('+meta["row"]+', this.value)"><i class="fas fa-heart"></i></button>'
-                        }
-                    }
+                    // {title: '', data: "Id",
+                    //     "render": function ( data, type, row, meta ) {
+                    //         return '<button value="'+ data +'" onclick="favoriteProduct('+meta["row"]+', this.value)"><i class="fas fa-heart"></i></button>'
+                    //     }
+                    // }
                 ],
                 columnDefs: [
                     {
@@ -126,6 +126,12 @@
             $('.akcio').click(function () {
                 $('#fejszoveg').text('Akciós termékek');
                 let url = '{{ route('customerOfferProductIndex') }}';
+                table.ajax.url(url).load();
+            });
+
+            $('.kedvenc').click(function () {
+                $('#fejszoveg').text('Kedvenc termékek');
+                let url = '{{ route('favoriteProductIndex') }}';
                 table.ajax.url(url).load();
             });
 
@@ -218,10 +224,10 @@
             table.row(Row).invalidate();
         }
 
-        function favoriteProduct(Row, value){
-            var d = table.row(Row).data();
-            alert(d.Id);
-        }
+        // function favoriteProduct(Row, value){
+        //     var d = table.row(Row).data();
+        //     alert(d.Id, d.ProductName);
+        // }
 
 
     </script>

@@ -9,6 +9,7 @@ use App\Models\CustomerContact;
 use App\Models\TransportMode;
 use App\Models\PaymentMethod;
 use App\Models\Currency;
+use App\Models\ProductCategory;
 use App\Models\Product;
 
 use shoppingCartClass;
@@ -151,5 +152,11 @@ Class ddwClass{
                  ->orderBy('Name')->pluck('Name', 'Id')->toArray();
 //        return Product::where('Inactive', 0)->orderBy('Name')->pluck('Name', 'Id')->toArray();
     }
+
+    public static function productCategoryDDW()
+    {
+        return [" "] + DB::table('productcategory')->orderBy('Name')->pluck('Name', 'Id')->toArray();
+    }
+
 
 }

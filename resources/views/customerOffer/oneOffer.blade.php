@@ -13,8 +13,10 @@
                 <div class="col-sm-12">
                     <h1>
                         {{ $customerOffer->Name }} {{ date('Y.m.d', strtotime($customerOffer->ValidFrom)) }} - {{ date('Y.m.d', strtotime($customerOffer->ValidTo)) }}
-                        <a class="btn btn-warning pull-left" title="Vezérlő pult" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('dIndex') }}"><i class="nav-icon fas fa-tachometer-alt"></i> Vezélő pult</a>
                     </h1>
+                    <div class="topmarginMinusz1em">
+                        <a class="btn btn-warning pull-right" title="Vezérlő pult" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('dIndex') }}"><i class="nav-icon fas fa-tachometer-alt"></i> Vezélő pult</a>
+                    </div>
                 </div>
             </div>
         </div>

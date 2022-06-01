@@ -37,5 +37,6 @@ Route::get('api/excelImportTruncate', [ApiController::class, 'excelImportTruncat
 Route::get('api/excelImportIdDelete', [ApiController::class, 'excelImportIdDelete'])->name('excelImportIdDelete');
 Route::post('api/datatableSave', [ApiController::class, 'datatableSave'])->name('datatableSave');
 Route::post('api/datatableLoad', [ApiController::class, 'datatableLoad'])->name('datatableLoad');
+Route::get('api/makeCustomerContactFavoriteProduct', [ApiController::class, 'makeCustomerContactFavoriteProduct'])->name('makeCustomerContactFavoriteProduct');
 
 

@@ -9,9 +9,22 @@
         border: none !important;
     }
 
+    .font20px {
+        font-size:20px;
+    }
+
     .formalignright {
         text-align: right !important;
     }
+
+    .leftmargin1em {
+        margin-left: 1em;
+    }
+
+    .rigthmargin1em {
+        margin-left: 1em;
+    }
+
     .topmarginMinusz1em {
         margin-top: -1em;
     }
