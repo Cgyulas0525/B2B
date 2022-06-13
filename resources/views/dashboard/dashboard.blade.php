@@ -20,7 +20,7 @@
                         <div class="widget-user-header bg-info">
                             <h3 class="widget-user-username">{{ $coffer->Name }}</h3>
                             <h3 class="widget-user-username">{{ date('Y.m.d', strtotime($coffer->ValidFrom)) }} - {{ date('Y.m.d', strtotime($coffer->ValidTo)) }}</h3>
-                            <h3 class="widget-user-username">Termék: {{ number_format(App\Classes\customerOfferClass::customerOfferProductsCount($coffer->Id), 0, ',', '.') }} db</h3>
+                            <h3 class="widget-user-username">{{ \App\Classes\langClass::trans('Termék') }}: {{ number_format(App\Classes\customerOfferClass::customerOfferProductsCount($coffer->Id), 0, ',', '.') }} {{ \App\Classes\langClass::trans('db') }}</h3>
                             <a href="{{ route('oneOffer', $coffer->Id )}}" data-scroll class="btn btn-primary btn-danger topmargin1em">Bővebben <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -31,45 +31,45 @@
             <!-- small box -->
             <div class="small-box bg-default">
                <div class="inner">
-                   <h3 class="card-title">Megrendelések</h3>
+                   <h3 class="card-title">{{ \App\Classes\langClass::trans('Megrendelések') }}</h3>
                    <table class="table table-bordered">
                        <tbody>
                        <tr>
-                           <td>Nyitott</td>
+                           <td>{{ \App\Classes\langClass::trans('Nyitott') }}</td>
                            <td class="text-right">{{ number_format(customerOrderClass::nyitottMegrendelesek(session('customer_id')), 0, ',', '.')}}</td>
                        </tr>
                        <tr>
-                           <td>Tétel</td>
+                           <td>{{ \App\Classes\langClass::trans('Tétel') }}</td>
                            <td class="text-right">{{ number_format(customerOrderClass::nyitottMegrendelesTetelSzam(session('customer_id')), 0, ',', '.')}}</td>
                        </tr>
                        <tr>
-                           <td>Érték</td>
+                           <td>{{ \App\Classes\langClass::trans('Érték') }}</td>
                            <td class="text-right">{{ number_format(customerOrderClass::openCustomerOrderValue(session('customer_id')), 0, ',', '.')}}</td>
                        </tr>
                        </tbody>
                    </table>
                        <!-- /.card-body -->
                 </div>
-                <a href="{{ route('customerOrders.index') }}" class="small-box-footer sajatBox">Tovább <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{ route('customerOrders.index') }}" class="small-box-footer sajatBox">{{ \App\Classes\langClass::trans('Tovább') }} <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-xs-12 topmargin1em">
             <!-- small box -->
             <div class="small-box bg-default">
                 <div class="inner">
-                    <h3 class="card-title">Hitel keret</h3>
+                    <h3 class="card-title">{{ \App\Classes\langClass::trans('Hitel keret') }}</h3>
                     <table class="table table-bordered">
                         <tbody>
                         <tr>
-                            <td>Nyitott</td>
+                            <td>{{ \App\Classes\langClass::trans('Nyitott') }}</td>
                             <td class="text-right">{{ number_format(customerClass::CustomerDebitQuotaValue(session('customer_id'), 'MaxCredit'), 0, ',', '.')}}</td>
                         </tr>
                         <tr>
-                            <td>Felhasznált</td>
+                            <td>{{ \App\Classes\langClass::trans('Felhasznált') }}</td>
                             <td class="text-right">{{ number_format(App\Models\Customer::where('Deleted', 0)->get()->count() * 15, 0, ',', '.')}}</td>
                         </tr>
                         <tr>
-                            <td>Szabad</td>
+                            <td>{{ \App\Classes\langClass::trans('Szabad') }}</td>
                             <td class="text-right">{{ number_format(App\Models\Customer::where('Deleted', 0)->get()->count() * 148321, 0, ',', '.')}}</td>
                         </tr>
                         </tbody>

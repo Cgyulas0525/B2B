@@ -13,7 +13,7 @@
   align-items: center; margin-top: 5em;">
         <div class="login-box"  >
             <div class="login-logo">
-                <a href="{{ url('/home') }}"><img src={{ URL('/public/img/B2B.png') }} style="width: 240px;" alt="DrugStore"></a>
+                <a href="{{ url('/home') }}"><img src={{ URL('/public/img/B2B.png') }} style="width: 240px;" alt="B2B"></a>
             </div>
 
             <!-- /.login-logo -->
@@ -79,25 +79,25 @@
                 let password = $('#password').val();
                 let password2 = $('#password2').val();
                 if ( password == '' ) {
-                    swMove("Üresen hagyta a jelszó mezőt!");
+                    swMove(<?php echo "'" . App\Classes\langClass::trans("Üresen hagyta a jelszó mezőt!") . "'"; ?>);
                     e.preventDefault();
                     $('#password').focus();
                     return false;
                 } else {
                     if ( password.length < 8) {
-                        swMove("Jelszónak minimum 8 karakter hosszúnak kell lennie!");
+                        swMove(<?php echo "'" . App\Classes\langClass::trans("Jelszónak minimum 8 karakter hosszúnak kell lennie!") . "'"; ?>);
                         e.preventDefault();
                         $('#password').focus();
                         return false;
                     } else {
                         if ( password2 == '' ) {
-                            swMove("Üresen hagyta a jelszó újra mezőt!");
+                            swMove(<?php echo "'" . App\Classes\langClass::trans("Üresen hagyta a jelszó újra mezőt!") . "'"; ?>);
                             e.preventDefault();
                             $('#password2').focus();
                             return false;
                         } else {
                             if ( password != password2 ) {
-                                swMove("Nem egyezik a két jelszó!");
+                                swMove(<?php echo "'" . App\Classes\langClass::trans("Nem egyezik a két jelszó!") . "'"; ?>);
                                 e.preventDefault();
                                 $('#password').val(null);
                                 $('#password2').val(null);

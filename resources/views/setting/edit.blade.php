@@ -6,7 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>
-                        Beállítások
+                        {{ \App\Classes\langClass::trans('Beállítások') }}
                     </h1>
                 </div>
             </div>
@@ -26,8 +26,8 @@
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Ment', ['class' => 'btn btn-primary', 'id' => 'saveBtn']) !!}
-                <a href="{{ route('dIndex') }}" class="btn btn-default">Kilép</a>
+                {!! Form::submit(\App\Classes\langClass::trans('Ment'), ['class' => 'btn btn-primary', 'id' => 'saveBtn']) !!}
+                <a href="{{ route('dIndex') }}" class="btn btn-default">{{ \App\Classes\langClass::trans('Kilép') }}</a>
             </div>
 
            {!! Form::close() !!}

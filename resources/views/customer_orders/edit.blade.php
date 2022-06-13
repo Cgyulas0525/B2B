@@ -8,13 +8,13 @@
                     <h4>{{ $customerOrder->VoucherNumber }} - {{ date('Y.m.d', strtotime($customerOrder->VoucherDate)) }}</h4>
                 </div>
                 <div class="col-sm-3 text-right">
-                    <h4>Nettó: {{ number_format($customerOrder->NetValue, 4, ',', '.') }}</h4>
+                    <h4>{{ \App\Classes\langClass::trans('Nettó') }}: {{ number_format($customerOrder->NetValue, 4, ',', '.') }}</h4>
                 </div>
                 <div class="col-sm-3 text-right">
-                    <h4>ÁFA: {{ number_format($customerOrder->VatValue, 4, ',', '.') }}</h4>
+                    <h4>{{ \App\Classes\langClass::trans('ÁFA') }}: {{ number_format($customerOrder->VatValue, 4, ',', '.') }}</h4>
                 </div>
                 <div class="col-sm-3 text-right">
-                    <h4>Bruttó: {{ number_format($customerOrder->GrossValue, 4, ',', '.') }}</h4>
+                    <h4>{{ \App\Classes\langClass::trans('Bruttó') }}: {{ number_format($customerOrder->GrossValue, 4, ',', '.') }}</h4>
                 </div>
             </div>
         </div>
@@ -35,8 +35,8 @@
             </div>
 
             <div class="card-footer">
-                <a href="#" class="btn btn-primary" id="saveBtn">Kosárba</a>
-                <a href="{{ route('customerOrders.index') }}" class="btn btn-default">Kilép</a>
+                <a href="#" class="btn btn-primary" id="saveBtn">{{ \App\Classes\langClass::trans('Kosárba') }}</a>
+                <a href="{{ route('customerOrders.index') }}" class="btn btn-default">{{ \App\Classes\langClass::trans('Kilép') }}</a>
             </div>
 
            {!! Form::close() !!}

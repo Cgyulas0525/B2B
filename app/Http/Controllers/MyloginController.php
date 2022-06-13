@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\langClass;
 use App\Models\Customer;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -21,12 +22,12 @@ class MyloginController extends Controller
         $password = $request->password;
 
         if (empty($name)) {
-            Flash::error('A név kötelező!')->important();
+            Flash::error(langClass::trans('A név kötelező!'))->important();
             return back();
         }
 
         if (empty($password)) {
-            Flash::error('A jelszó kötelező!')->important();
+            Flash::error(langClass::trans('A jelszó kötelező!'))->important();
             return back();
         }
 
@@ -36,7 +37,7 @@ class MyloginController extends Controller
             ->first();
 
         if (empty($user)) {
-            Flash::error('Hibás név vagy jelszó!')->important();
+            Flash::error(langClass::trans('Hibás név vagy jelszó!'))->important();
             return back();
         }
 

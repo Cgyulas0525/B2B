@@ -15,7 +15,7 @@
                     <section class="content-header">
                         <div class="row">
                             <div class="col-sm-6">
-                                <h4><a id="fejszoveg"> Összes megrendelés</a></h4>
+                                <h4><a id="fejszoveg">{{ \App\Classes\langClass::trans('Összes megrendelés') }} </a></h4>
                             </div>
                             <div class="col-sm-6">
                                 <div class="pull-left">
@@ -62,6 +62,9 @@
             // $('[data-widget="pushmenu"]').PushMenu('collapse');
 
             table = $('.partners-table').DataTable({
+                language: {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                },
                 serverSide: true,
                 scrollY: 450,
                 scrollX: true,
@@ -71,16 +74,16 @@
                 ajax: "{{ route('customerOrders.index') }}",
                 buttons: [],
                 columns: [
-                    {title: 'Tételek', data: 'action', sClass: "text-center", width: '45px', name: 'action', orderable: false, searchable: false},
-                    {title: 'Másolás', data: 'tetelszam', sClass: "text-center", width: '45px', name: 'tetelszam1', orderable: false, searchable: false},
-                    {title: 'Megrendelés szám', data: 'VoucherNumber', name: 'VoucherNumber'},
-                    {title: 'Dátum', data: 'VoucherDate', render: function (data, type, row) { return data ? moment(data).format('YYYY.MM.DD') : ''; }, sClass: "text-center", width:'150px', name: 'VoucherDate'},
-                    {title: 'Netto', data: 'NetValue', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'NetValue'},
-                    {title: 'ÁFA', data: 'VatValue', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'VatValue'},
-                    {title: 'Bruttó', data: 'GrossValue', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'GrossValue'},
-                    {title: 'Pénznem', data: 'currencyName', sClass: "text-center", width:'25px', name: 'currencyName'},
-                    {title: 'Tétel', data: 'tetelszam', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'tetelszam'},
-                    {title: 'Id', data: 'Id',  sClass: "text-right", width:'75px', name: 'Id', orderable: false, searchable: false, visible: false},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Tételek') . "'"; ?>, data: 'action', sClass: "text-center", width: '45px', name: 'action', orderable: false, searchable: false},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Másolás') . "'"; ?>, data: 'tetelszam', sClass: "text-center", width: '45px', name: 'tetelszam1', orderable: false, searchable: false},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Megrendelés szám') . "'"; ?>, data: 'VoucherNumber', name: 'VoucherNumber'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Dátum') . "'"; ?>, data: 'VoucherDate', render: function (data, type, row) { return data ? moment(data).format('YYYY.MM.DD') : ''; }, sClass: "text-center", width:'150px', name: 'VoucherDate'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Netto') . "'"; ?>, data: 'NetValue', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'NetValue'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('ÁFA') . "'"; ?>, data: 'VatValue', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'VatValue'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Bruttó') . "'"; ?>, data: 'GrossValue', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'GrossValue'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Pénznem') . "'"; ?>, data: 'currencyName', sClass: "text-center", width:'25px', name: 'currencyName'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Tétel') . "'"; ?>, data: 'tetelszam', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'tetelszam'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Id') . "'"; ?>, data: 'Id',  sClass: "text-right", width:'75px', name: 'Id', orderable: false, searchable: false, visible: false},
                 ],
                 columnDefs: [
                     {  targets: 1,
@@ -91,41 +94,38 @@
                 ],
             });
 
-            function btnClick( fejszoveg, utvonal) {
-            }
-
             $('.all').click(function () {
-                $('#fejszoveg').text('Összes megrendelés');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Összes megrendelés') . "'"; ?>);
                 let url = '{{ route('customerOrders.index') }}';
                 table.ajax.url(url).load();
             });
 
             $('.yearAll').click(function () {
-                $('#fejszoveg').text('Idei megrendelések');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Idei megrendelés') . "'"; ?>);
                 let url = '{{ route('indexAllThisYear') }}';
                 table.ajax.url(url).load();
             });
 
             $('.allOwn').click(function () {
-                $('#fejszoveg').text('Saját megrendelés');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Saját megrendelés') . "'"; ?>);
                 let url = '{{ route('indexOwn') }}';
                 table.ajax.url(url).load();
             });
 
             $('.yearAllOwn').click(function () {
-                $('#fejszoveg').text('Idei saját megrendelések');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Idei saját megrendelés') . "'"; ?>);
                 let url = '{{ route('indexYearAllOwn') }}';
                 table.ajax.url(url).load();
             });
 
             $('.cart').click(function () {
-                $('#fejszoveg').text('Összes kosár');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Összes kosár') . "'"; ?>);
                 let url = '{{ route('indexSC') }}';
                 table.ajax.url(url).load();
             });
 
             $('.yearCart').click(function () {
-                $('#fejszoveg').text('Idei kosár');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Idei kosár') . "'"; ?>);
                 let url = '{{ route('indexSCThisYear') }}';
                 table.ajax.url(url).load();
             });
@@ -133,18 +133,18 @@
 
         function copyCustomerOrderToShoppingCart(Row) {
             swal.fire({
-                title: "Megrendelés kosárba másolás!",
-                text: "Biztosan kosárba másolja a megrendelés összes tételét?",
+                title: <?php echo "'" . App\Classes\langClass::trans("Megrendelés kosárba másolás!") . "'"; ?>,
+                text: <?php echo "'" . App\Classes\langClass::trans("Biztosan kosárba másolja a megrendelés összes tételét?") . "'"; ?>,
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Kosárba",
-                cancelButtonText: "Kilép"
+                confirmButtonText: <?php echo "'" . App\Classes\langClass::trans("Kosárba") . "'"; ?>,
+                cancelButtonText: <?php echo "'" . App\Classes\langClass::trans("Kilép") . "'"; ?>
             }).then((result) => {
                 if (result.isConfirmed) {
                     var d = table.row(Row).data();
                     var fejszoveg = $('#fejszoveg').text();
-                    if (fejszoveg === 'Összes kosár' || fejszoveg === 'Idei kosár') {
+                    if (fejszoveg === <?php echo "'" . App\Classes\langClass::trans('Összes kosár') . "'"; ?> || fejszoveg === <?php echo "'" . App\Classes\langClass::trans('Idei kosár') . "'"; ?>) {
                         $.ajax({
                             type:"GET",
                             url:"{{url('api/copyShoppingCartToShoppingCart')}}",

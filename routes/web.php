@@ -14,6 +14,7 @@ use App\Http\Controllers\LogItemController;
 use App\Http\Controllers\ShoppingCartDetailController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\CustomerContactFavoriteProductController;
+use App\Http\Controllers\LanguageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,3 +101,6 @@ Route::get('excelImportUseRecordsDelete', [ShoppingCartController::class, 'excel
 Route::resource('customerContactFavoriteProducts', App\Http\Controllers\CustomerContactFavoriteProductController::class);
 Route::get('productCategoryProductindex/{category}', [CustomerContactFavoriteProductController::class, 'productCategoryProductindex'])->name('productCategoryProductindex');
 Route::get('destroyMe/{id}', [CustomerContactFavoriteProductController::class, 'destroyMe'])->name('cCFPDestroyMe');
+
+
+Route::get('lan-change', [LanguageController::class, 'langChange'])->name('lan.change');

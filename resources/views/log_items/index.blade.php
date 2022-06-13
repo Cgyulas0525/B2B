@@ -14,7 +14,7 @@
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
                     <div class="row content-header">
                         <div class="mylabel3 col-sm-6">
-                            <h4><a id="fejszoveg"> Log adatok</a></h4>
+                            <h4><a id="fejszoveg"> {{ \App\Classes\langClass::trans('Log adatok') }}</a></h4>
                         </div>
                         <div class="mylabel3 col-sm-6">
                             <a href="#" class="btn btn-warning szuresgomb szures" title="Szűrés"><i class="fas fa-filter"></i></a>
@@ -22,20 +22,20 @@
                             <a href="#" class="btn btn-success szuresgomb egynap" title="24 óra"><i class="fas fa-calendar-day"></i></a>
                         </div>
                         <div class="col-sm-4">
-                            {!! Form::label('customer', 'Partner:') !!}
+                            {!! Form::label('customer', \App\Classes\langClass::trans('Partner:')) !!}
                             {!! Form::select('customer', ddwClass::logItemCustomerDDw(), empty($_COOKIE['logCustomer']) ? null : $_COOKIE['logCustomer'], ['class'=>'select2 form-control', 'required' => 'true', 'id' => 'customer']) !!}
                         </div>
                         <div class="col-sm-4">
-                            {!! Form::label('felhasznalo', 'Felhasználó:') !!}
+                            {!! Form::label('felhasznalo', \App\Classes\langClass::trans('Felhasználó:')) !!}
                             {!! Form::select('customercontact_id', empty($_COOKIE['logCustomer']) ? ddwClass::logItemUserDDW(-9999999) : ddwClass::logItemUserDDW($_COOKIE['logCustomer']),
                                 empty($_COOKIE['logUser']) ? null: $_COOKIE['logUser'],['class'=>'select2 form-control', 'required' => 'true', 'id' => 'customercontact_id']) !!}
                         </div>
                         <div class="col-sm-2">
-                            {!! Form::label('startDate', 'Időszak tól:') !!}
+                            {!! Form::label('startDate', \App\Classes\langClass::trans('Időszak tól:')) !!}
                             {!! Form::date('startDate', empty($_COOKIE['logStartDate']) ? date('Y-m-d', strtotime('now - 1 day')) : $_COOKIE['logStartDate'], ['class' => 'form-control', 'required' => 'true', 'id'=>'startDate']) !!}
                         </div>
                         <div class="col-sm-2">
-                            {!! Form::label('endDate', 'ig:') !!}
+                            {!! Form::label('endDate', \App\Classes\langClass::trans('ig:')) !!}
                             {!! Form::date('endDate', empty($_COOKIE['logEndDate']) ? \Carbon\Carbon::now() : $_COOKIE['logEndDate'], ['class' => 'form-control', 'required' => 'true', 'id'=>'endDate']) !!}
                         </div>
                     </div>
@@ -77,11 +77,11 @@
                                                  myUser::user()->customerId,
                                                  myUser::user()->id]) }}",
                 columns: [
-                    {title: 'Feladat', data: 'action', sClass: "text-center", width: '150px', name: 'action', orderable: false, searchable: false},
-                    {title: 'Partner cég', data: 'customerName', name: 'customerName'},
-                    {title: 'Felhasználó', data: 'userName', name: 'userName'},
-                    {title: 'Dátum', data: 'eventdatetime', render: function (data, type, row) { return data ? moment(data).format('YYYY.MM.DD HH:mm:ss') : ''; }, sClass: "text-center", width:'150px', name: 'eventdatetime'},
-                    {title: 'Esemény', data: 'eventName', sClass: "text-center", name: 'eventName'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Feladat') . "'"; ?>, data: 'action', sClass: "text-center", width: '150px', name: 'action', orderable: false, searchable: false},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Partner cég') . "'"; ?>, data: 'customerName', name: 'customerName'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Felhasználó') . "'"; ?>, data: 'userName', name: 'userName'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Dátum') . "'"; ?>, data: 'eventdatetime', render: function (data, type, row) { return data ? moment(data).format('YYYY.MM.DD HH:mm:ss') : ''; }, sClass: "text-center", width:'150px', name: 'eventdatetime'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Esemény') . "'"; ?>, data: 'eventName', sClass: "text-center", name: 'eventName'},
                 ]
             });
 
@@ -121,7 +121,7 @@
                 $('#startDate').val(moment(startDate).format('YYYY-MM-DD'));
                 $('#endDate').val(moment(Date($.now())).format('YYYY-MM-DD'));
 
-                $('#fejszoveg').text('Log adatok elmúlt 24 óra');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Log adatok elmúlt 24 óra') . "'"; ?>);
                 let url = '{{ route('logItems.index') }}';
 
                 cookieSave();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\langClass;
 use App\Http\Requests\CreateUsersRequest;
 use App\Http\Requests\UpdateUsersRequest;
 use App\Repositories\UsersRepository;
@@ -197,7 +198,7 @@ class UsersController extends AppBaseController
             logClass::insertDeleteRecord( 5, "Users", $user->id);
 
         } else {
-            Flash::error('Nem adott meg felhasználót!')->important();
+            Flash::error(langClass::trans('Nem adott meg felhasználót!'))->important();
             return back();
         }
 

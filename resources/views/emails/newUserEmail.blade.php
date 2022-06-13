@@ -10,7 +10,7 @@
 <p>{{ $password }}</p><br>
 <p>{{ $bodyEnd }}</p><br>
 
-<p>Üdvözlettel</p>
+<p>{{ \App\Classes\langClass::trans('Üdvözlettel') }}</p>
 <p>{{ $datum }}</p>
 </body>
 </html>

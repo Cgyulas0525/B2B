@@ -12,7 +12,7 @@
                     <section class="content-header">
                         <div class="row">
                             <div class="col-sm-3">
-                                <h4><a id="fejszoveg"> Minden termék</a></h4>
+                                <h4><a id="fejszoveg"> {{ \App\Classes\langClass::trans('Minden termék') }}</a></h4>
                             </div>
                             <div class="col-sm-3">
                                 <h6>
@@ -27,10 +27,10 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-primary akcio" title="Akciós"><i class="fas fa-percent"></i></a>
-                                    <a href="#" class="btn btn-success szerzodes" title="Szerződéses"><i class="fas fa-handshake"></i></a>
-                                    <a href="#" class="btn btn-danger kedvenc" title="Kedvencek"><i class="fas fa-heart"></i></a>
-                                    <a href="#" class="btn btn-dark mind" title="Minden tétel"><i class="fas fa-warehouse"></i></a>
+                                    <a href="#" class="btn btn-primary akcio" title={{ \App\Classes\langClass::trans("Akciós") }}><i class="fas fa-percent"></i></a>
+                                    <a href="#" class="btn btn-success szerzodes" title={{ \App\Classes\langClass::trans("Szerződéses") }}><i class="fas fa-handshake"></i></a>
+                                    <a href="#" class="btn btn-danger kedvenc" title={{ \App\Classes\langClass::trans("Kedvencek") }}><i class="fas fa-heart"></i></a>
+                                    <a href="#" class="btn btn-dark mind" title={{ \App\Classes\langClass::trans("Minden tétel") }}><i class="fas fa-warehouse"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -83,12 +83,12 @@
                 dom: 'Bfrtip',
                 ajax: "{{ route('productIndex' ) }}",
                 columns: [
-                    {title: 'Termék', data: 'ProductName', name: 'ProductName'},
-                    {title: 'Kód', data: 'Code', name: 'Code'},
-                    {title: 'Mennyiség', data: 'Quantity', width: '150px', name: 'Quantity', id: 'Quntity'},
-                    {title: 'Termék csoport', data: 'ProductCategoryName', width: '150px', name: 'ProductCategoryName'},
-                    {title: 'Me.egys', data: 'QuantityUnitName', name: 'QuantityUnitName'},
-                    {title: 'Vonalkód', data: 'Barcode', name: 'Barcode'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Termék') . "'"; ?>, data: 'ProductName', name: 'ProductName'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Kód') . "'"; ?>, data: 'Code', name: 'Code'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Mennyiség') . "'"; ?>, data: 'Quantity', width: '150px', name: 'Quantity', id: 'Quntity'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Termék csoport') . "'"; ?>, data: 'ProductCategoryName', width: '150px', name: 'ProductCategoryName'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Me.egys') . "'"; ?>, data: 'QuantityUnitName', name: 'QuantityUnitName'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Vonalkód') . "'"; ?>, data: 'Barcode', name: 'Barcode'},
                     // {title: '', data: "Id",
                     //     "render": function ( data, type, row, meta ) {
                     //         return '<button value="'+ data +'" onclick="favoriteProduct('+meta["row"]+', this.value)"><i class="fas fa-heart"></i></button>'
@@ -118,25 +118,25 @@
             } );
 
             $('.szerzodes').click(function () {
-                $('#fejszoveg').text('Szerződéses termékek');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Szerződéses termékek') . "'"; ?>);
                 let url = '{{ route('customerContractProductIndex') }}';
                 table.ajax.url(url).load();
             });
 
             $('.akcio').click(function () {
-                $('#fejszoveg').text('Akciós termékek');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Akciós termékek') . "'"; ?>);
                 let url = '{{ route('customerOfferProductIndex') }}';
                 table.ajax.url(url).load();
             });
 
             $('.kedvenc').click(function () {
-                $('#fejszoveg').text('Kedvenc termékek');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Kedvenc termékek') . "'"; ?>);
                 let url = '{{ route('favoriteProductIndex') }}';
                 table.ajax.url(url).load();
             });
 
             $('.mind').click(function () {
-                $('#fejszoveg').text('Minden termék');
+                $('#fejszoveg').text(<?php echo "'" . App\Classes\langClass::trans('Minden termék') . "'"; ?>);
                 let url = '{{ route('productIndex') }}';
                 table.ajax.url(url).load();
             });
@@ -150,8 +150,8 @@
         function modifyDetail(d, value) {
             const url = $(this).attr('href');
             swal.fire({
-                title: "Ebben a kosárban már van ilyen termék!",
-                text: "Biztosan hozzáadja ezt a mennyiséget?",
+                title: <?php echo "'" . App\Classes\langClass::trans("Ebben a kosárban már van ilyen termék!") . "'"; ?>,
+                text: <?php echo "'" . App\Classes\langClass::trans("Biztosan hozzáadja ezt a mennyiséget?") . "'"; ?>,
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",

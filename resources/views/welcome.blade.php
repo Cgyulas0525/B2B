@@ -45,12 +45,12 @@
             <div class="col-lg-6 col-md-6 col-xs-12 ">
                 <div class="login-box">
                     <div class="login-logo">
-                        <a href="{{ url('/home') }}"><img src={{ URL('/public/img/B2B.png') }} style="width: 240px;" alt="Business Analysis"></a>
+                        <a href="{{ url('/home') }}"><img src={{ URL('/public/img/B2B.png') }} style="width: 240px;" alt="B2B"></a>
                     </div>
 
                     <!-- /.login-logo -->
                     <div class="login-box-body">
-                        <p class="login-box-msg">Bejelentkezés</p>
+                        <p class="login-box-msg">{{ \App\Classes\langClass::trans('Bejelentkezés') }}</p>
 
                         <form method="post" action="{{ route('myLogin') }}">
                             {!! csrf_field() !!}
@@ -81,7 +81,7 @@
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-xs-4">
-                                    <button type="submit" class="btn btn-primary btn-block btn-flat">Belép</button>
+                                    <button type="submit" class="btn btn-primary btn-block btn-flat">{{ \App\Classes\langClass::trans('Belép') }}</button>
                                 </div>
                                 <!-- /.col -->
                             </div>

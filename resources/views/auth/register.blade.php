@@ -38,7 +38,7 @@
 
     <div class="card">
         <div class="card-body register-card-body">
-            <p class="login-box-msg">Register a new membership</p>
+            <p class="login-box-msg">{{ App\Classes\langClass::trans('Regisztráljon') }}</p>
 
             <form method="post" action="{{ route('register') }}">
                 @csrf
@@ -99,19 +99,19 @@
                         <div class="icheck-primary">
                             <input type="checkbox" id="agreeTerms" name="terms" value="agree">
                             <label for="agreeTerms">
-                                I agree to the <a href="#">terms</a>
+                                {{ \App\Classes\langClass::trans('Elfogadom a ') }}<a href="#">{{ \App\Classes\langClass::trans('feltételeket') }}</a>
                             </label>
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <button type="submit" class="btn btn-primary btn-block">{{ App\Classes\langClass::trans('Regisztráció') }}</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
-            <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
+            <a href="{{ route('login') }}" class="text-center">{{ \App\Classes\langClass::trans('Már van tagságom') }}</a>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

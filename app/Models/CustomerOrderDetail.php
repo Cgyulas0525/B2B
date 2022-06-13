@@ -349,7 +349,8 @@ class CustomerOrderDetail extends Model
         'QuantityUnitName',
         'CurrencyName',
         'VatName',
-        'VatRate'
+        'VatRate',
+        'StatusName'
     ];
 
     public function getProductNameAttribute() {
@@ -375,6 +376,11 @@ class CustomerOrderDetail extends Model
     public function getVatRateAttribute() {
         $vat = Vat::where('Id', $this->Vat)->first();
         return !empty($this->Vat) ? !empty($vat) ? $vat->Rate : 0 : 0;
+    }
+
+    public function getStatusNameAttribute() {
+        $status = CustomerOrderDetailStatus::where('Id', $this->DetailStatus)->first();
+        return !empty($this->DetailStatus) ? !empty($status) ? $status->Name : ' ' : ' ';
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\langClass;
 use App\Http\Requests\CreateShoppingCartRequest;
 use App\Http\Requests\UpdateShoppingCartRequest;
 use App\Imports\excelImportImport;
@@ -57,7 +58,7 @@ class ShoppingCartController extends AppBaseController
         $file = $request->file('import_file');
 
         if (empty($request->import_file)) {
-            Flash::error('Nem adott meg filet!')->important();
+            Flash::error(langClass::trans('Nem adott meg filet!'))->important();
         } else {
 
             DB::table('excelimport')->where('user_id', myUser::user()->id)->delete();
@@ -174,7 +175,7 @@ class ShoppingCartController extends AppBaseController
         if ( shoppingCartClass::isOpenedShoppingCart(myUser::user()->customercontact_id) == 0 ) {
             return view('shopping_carts.create');
         } else {
-            Flash::error('Van már nyitott kosara!')->important();
+            Flash::error(langClass::trans('Van már nyitott kosara!'))->important();
             return view('shopping_carts.index');
         }
     }
@@ -402,7 +403,7 @@ class ShoppingCartController extends AppBaseController
         $shoppingCart = ShoppingCart::OrderBy('Id', 'desc')->first();
 
         if ( $id != $shoppingCart->Id ) {
-            Flash::error('A tétel nem nyitható vissza!')->important();
+            Flash::error(langClass::trans('A tétel nem nyitható vissza!'))->important();
         } else {
             DB::table('ShoppingCart')
                 ->where('Id', $id)
@@ -423,16 +424,16 @@ class ShoppingCartController extends AppBaseController
     public function importExcel(Request $request)
     {
         if (empty($request->import_file)) {
-            Flash::error('Nem választott filet!')->important();
+            Flash::error(langClass::trans('Nem választott filet!'))->important();
             return back();
         }
         if ( $request->code != 0 && $request->quantity != 0 && $request->code == $request->quantity) {
-            Flash::error('A két mező nem egyezhet meg!')->important();
+            Flash::error(langClass::trans('A két mező nem egyezhet meg!'))->important();
             return back();
         }
         $array = Excel::toArray(new excelImportImport,  $request->import_file);
         if ( $request->code > count($array[0][0]) || $request->quantity > count($array[0][0]) ) {
-            Flash::error('A mező nem lehet nagyobb mint az oszlopok száma!')->important();
+            Flash::error(langClass::trans('A mező nem lehet nagyobb mint az oszlopok száma!'))->important();
             return back();
         }
 

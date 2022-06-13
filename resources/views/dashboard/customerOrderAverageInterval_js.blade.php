@@ -21,7 +21,10 @@
             return chartdata;
         }
 
-        var chart_customerOrderAverageInterval = highchartLine( 'customerOrderAverageInterval', 'line', 320, LineChartKategoria(coi), LineChartData(coi, ''), 'Megrendelés átlag értékek az elmúlt 12 hónapban', 'havi bontás', 'forint');
+        var chart_customerOrderAverageInterval = highchartLine( 'customerOrderAverageInterval', 'line', 320, LineChartKategoria(coi), LineChartData(coi, ''),
+            <?php echo "'" . App\Classes\langClass::trans('Megrendelés átlag értékek az elmúlt 12 hónapban') . "'"; ?>,
+            <?php echo "'" . App\Classes\langClass::trans('havi bontás') . "'"; ?>,
+            <?php echo "'" . App\Classes\langClass::trans('forint') . "'"; ?>);
 
     });
 

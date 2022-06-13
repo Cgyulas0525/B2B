@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\langClass;
 use App\Http\Requests\CreateShoppingCartDetailRequest;
 use App\Http\Requests\UpdateShoppingCartDetailRequest;
 use App\Models\ShoppingCart;
@@ -256,7 +257,7 @@ class ShoppingCartDetailController extends AppBaseController
 
         $shoppingCartDetail = $this->shoppingCartDetailRepository->create($input);
 
-        Flash::success('Shopping Cart Detail saved successfully.');
+        Flash::success(langClass::trans('Kosár tétel mentés sikeres.'));
 
         return redirect(route('shoppingCartDetails.index'));
     }
@@ -273,7 +274,7 @@ class ShoppingCartDetailController extends AppBaseController
         $shoppingCartDetail = $this->shoppingCartDetailRepository->find($id);
 
         if (empty($shoppingCartDetail)) {
-            Flash::error('Shopping Cart Detail not found');
+            Flash::error(langClass::trans('Kosár tétel nem található'));
 
             return redirect(route('shoppingCartDetails.index'));
         }
@@ -293,7 +294,7 @@ class ShoppingCartDetailController extends AppBaseController
         $shoppingCartDetail = $this->shoppingCartDetailRepository->find($id);
 
         if (empty($shoppingCartDetail)) {
-            Flash::error('Shopping Cart Detail not found');
+            Flash::error(langClass::trans('Kosár tétel nem található'));
 
             return redirect(route('shoppingCartDetails.index'));
         }
@@ -314,14 +315,14 @@ class ShoppingCartDetailController extends AppBaseController
         $shoppingCartDetail = $this->shoppingCartDetailRepository->find($id);
 
         if (empty($shoppingCartDetail)) {
-            Flash::error('Shopping Cart Detail not found');
+            Flash::error(langClass::trans('Kosár tétel nem található'));
 
             return redirect(route('shoppingCartDetails.index'));
         }
 
         $shoppingCartDetail = $this->shoppingCartDetailRepository->update($request->all(), $id);
 
-        Flash::success('Shopping Cart Detail updated successfully.');
+        Flash::success(langClass::trans('A kosár tétel modosítás sikeres.'));
 
         return redirect(route('shoppingCartDetails.index'));
     }

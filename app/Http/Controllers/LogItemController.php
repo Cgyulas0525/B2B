@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\langClass;
 use App\Http\Requests\CreateLogItemRequest;
 use App\Http\Requests\UpdateLogItemRequest;
 use App\Models\LogItemTable;
@@ -170,7 +171,7 @@ class LogItemController extends AppBaseController
 
         $logItem = $this->logItemRepository->create($input);
 
-        Flash::success('Log Item saved successfully.');
+        Flash::success(langClass::trans('A mentés sikeres'));
 
         return redirect(route('logItems.index'));
     }
@@ -187,7 +188,7 @@ class LogItemController extends AppBaseController
         $logItem = LogItemTable::find($id);
 
         if (empty($logItem)) {
-            Flash::error('Nincs a tételhez kapcsolódó tábla');
+            Flash::error(langClass::trans('Nincs a tételhez kapcsolódó tábla'));
 
             return redirect(route('logItems.index'));
         }
@@ -207,7 +208,7 @@ class LogItemController extends AppBaseController
         $logItem = $this->logItemRepository->find($id);
 
         if (empty($logItem)) {
-            Flash::error('Log Item not found');
+            Flash::error(langClass::trans('Log Item nem található'));
 
             return redirect(route('logItems.index'));
         }
@@ -228,14 +229,14 @@ class LogItemController extends AppBaseController
         $logItem = $this->logItemRepository->find($id);
 
         if (empty($logItem)) {
-            Flash::error('Log Item not found');
+            Flash::error(langClass::trans('Log Item nem található'));
 
             return redirect(route('logItems.index'));
         }
 
         $logItem = $this->logItemRepository->update($request->all(), $id);
 
-        Flash::success('Log Item updated successfully.');
+        Flash::success(langClass::trans('Log Item módosítása sikeres'));
 
         return redirect(route('logItems.index'));
     }
@@ -254,14 +255,14 @@ class LogItemController extends AppBaseController
         $logItem = $this->logItemRepository->find($id);
 
         if (empty($logItem)) {
-            Flash::error('Log Item not found');
+            Flash::error(langClass::trans('Log Item nem található'));
 
             return redirect(route('logItems.index'));
         }
 
         $this->logItemRepository->delete($id);
 
-        Flash::success('Log Item deleted successfully.');
+        Flash::success(langClass::trans('Log Item törlése sikeres'));
 
         return redirect(route('logItems.index'));
     }

@@ -9,7 +9,7 @@
             <div class="form-group col-sm-12">
                 <div class="row">
                     <div class="mylabel8 col-sm-2">
-                        {!! Form::label('VoucherNumber', 'Bizonylatszám:') !!}
+                        {!! Form::label('VoucherNumber', \App\Classes\langClass::trans('Bizonylatszám:')) !!}
                     </div>
                     <div class="mylabel8 col-sm-10">
                         {!! Form::text('VoucherNumber', $shoppingCart->VoucherNumber, ['class' => 'form-control cellLabel', 'readonly' => 'true']) !!}
@@ -21,7 +21,7 @@
             <div class="form-group col-sm-12">
                 <div class="row">
                     <div class="mylabel8 col-sm-4">
-                        {!! Form::label('PaymentMethod', 'Fizetési mód:') !!}
+                        {!! Form::label('PaymentMethod', \App\Classes\langClass::trans('Fizetési mód:')) !!}
                     </div>
                     <div class="mylabel8 col-sm-8">
                         {!! Form::select('PaymentMethod', ddwClass::customerPaymentMethodDDW(), $shoppingCart->PaymentMethod, ['class'=>'select2 form-control cellLabel', 'required' => 'true', 'id' => 'PaymentMethod']) !!}
@@ -33,7 +33,7 @@
             <div class="form-group col-sm-12">
                 <div class="row">
                     <div class="mylabel8 col-sm-4">
-                        {!! Form::label('CurrencyName', 'Pénznem:') !!}
+                        {!! Form::label('CurrencyName', \App\Classes\langClass::trans('Pénznem:')) !!}
                     </div>
                     <div class="mylabel8 col-sm-8">
                         {!! Form::text('CurrencyName', $shoppingCart->CurrencyName, ['class'=>'form-control cellLabel', 'id' => 'CurrencyName', 'readonly' => 'true']) !!}
@@ -46,7 +46,7 @@
         <div class="form-group col-sm-8">
             <div class="row">
                 <div class="mylabel8 col-sm-1">
-                    {!! Form::label('CustomerAddress', 'Telephely:') !!}
+                    {!! Form::label('CustomerAddress', \App\Classes\langClass::trans('Telephely:')) !!}
                 </div>
                 <div class="mylabel8 col-sm-11">
                     {!! Form::select('CustomerAddress', ddwClass::customerAddressDDW(session('customer_id')), $shoppingCart->CustomerAddress,['class'=>'select2 form-control cellLabel', 'required' => 'true', 'id' => 'CustomerAddress']) !!}
@@ -57,7 +57,7 @@
             <div class="form-group col-sm-12">
                 <div class="row">
                     <div class="mylabel8 col-sm-2">
-                        {!! Form::label('TransportMode', 'Szállítási mód:') !!}
+                        {!! Form::label('TransportMode', \App\Classes\langClass::trans('Szállítási mód:')) !!}
                     </div>
                     <div class="mylabel8 col-sm-10">
                         {!! Form::select('TransportMode', ddwClass::transportmodeDDW(), $shoppingCart->TransportMode,['class'=>'select2 form-control cellLabel', 'required' => 'true', 'id' => 'TransportMode']) !!}
@@ -71,7 +71,7 @@
             <div class="form-group col-sm-12">
                 <div class="row">
                     <div class="mylabel8 col-sm-3">
-                        {!! Form::label('DepositValue', 'Előleg:') !!}
+                        {!! Form::label('DepositValue', \App\Classes\langClass::trans('Előleg:')) !!}
                     </div>
                     <div class="mylabel8 col-sm-9">
                         {!! Form::number('DepositValue', $shoppingCart->DepositValue, ['class' => 'form-control cellLabel text-right', 'id' => 'DepositValue', 'pattern="[0-9]+([\.,][0-9]+)?" step="0.0001"']) !!}
@@ -83,7 +83,7 @@
             <div class="form-group col-sm-12">
                 <div class="row">
                     <div class="mylabel8 col-sm-3">
-                        {!! Form::label('DepositPercent', 'Előleg %:') !!}
+                        {!! Form::label('DepositPercent', \App\Classes\langClass::trans('Előleg %:')) !!}
                     </div>
                     <div class="mylabel8 col-sm-9">
                         {!! Form::number('DepositPercent', $shoppingCart->DepositPercent, ['class' => 'form-control cellLabel text-right', 'id' => 'DepositPercent', 'pattern="[0-9]+([\.,][0-9]+)?" step="0.0001"']) !!}
@@ -97,7 +97,7 @@
                     <div class="form-group col-sm-12">
                         <div class="row">
                             <div class="mylabel8 col-sm-4">
-                                {!! Form::label('NetValue', 'Nettó érték:') !!}
+                                {!! Form::label('NetValue', \App\Classes\langClass::trans('Nettó érték:')) !!}
                             </div>
                             <div class="mylabel8 col-sm-8">
                                 {!! Form::text('NetValue', number_format($shoppingCart->NetValue, 4, ',', '.'), ['class' => 'form-control cellLabel text-right', 'id' => 'NetValue', 'readonly' => 'true', 'pattern="[0-9]+([\.,][0-9]+)?" step="0.0001"']) !!}
@@ -108,7 +108,7 @@
                 <div class="form-group col-sm-4">
                     <div class="row">
                         <div class="mylabel8 col-sm-4">
-                            {!! Form::label('VatValue', 'Áfa:') !!}
+                            {!! Form::label('VatValue', \App\Classes\langClass::trans('Áfa:')) !!}
                         </div>
                         <div class="mylabel8 col-sm-8">
                             {!! Form::text('VatValue', number_format($shoppingCart->VatValue, 4, ',', '.'), ['class' => 'form-control cellLabel text-right', 'id' => 'VatValue', 'readonly' => 'true', 'pattern="[0-9]+([\.,][0-9]+)?" step="0.0001"']) !!}
@@ -119,7 +119,7 @@
                     <div class="form-group col-sm-12">
                         <div class="row">
                             <div class="mylabel8 col-sm-4">
-                                {!! Form::label('GrossValue', 'Bruttó érték:') !!}
+                                {!! Form::label('GrossValue', \App\Classes\langClass::trans('Bruttó érték:')) !!}
                             </div>
                             <div class="mylabel8 col-sm-8">
                                 {!! Form::text('GrossValue', number_format($shoppingCart->GrossValue, 4, ',', '.'), ['class' => 'form-control cellLabel text-right', 'id' => 'GrossValue', 'readonly' => 'true', 'pattern="[0-9]+([\.,][0-9]+)?" step="0.0001"']) !!}
@@ -136,7 +136,7 @@
         <div class="form-group col-sm-12">
             <div class="row">
                 <div class="mylabel8 col-sm-1">
-                    {!! Form::label('Comment', 'Megjegyzés:') !!}
+                    {!! Form::label('Comment', \App\Classes\langClass::trans('Megjegyzés:')) !!}
                 </div>
                 <div class="mylabel8 col-sm-11">
                     {!! Form::textarea('Comment', $shoppingCart->Comment, ['class' => 'form-control cellLabel', 'rows' => '2', 'placeholder' => 'Megjegyzés', 'id' => 'Comment']) !!}
@@ -215,14 +215,14 @@
                 order: [[0, 'asc']],
                 ajax: "{{ route('shoppingCartDetailIndex', $shoppingCart->Id ) }}",
                 columns: [
-                    {title: 'Termék', data: 'ProductName', name: 'ProductName'},
-                    {title: 'Mennyiség', data: 'Quantity', width: '150px', name: 'Quantity', id: 'Quntity'},
-                    {title: 'Me.egys', data: 'QuantityUnitName', name: 'QuantityUnitName'},
-                    {title: 'Egys.ár', data: 'UnitPrice', name: 'UnitPrice', id: 'UnitPrice'},
-                    {title: 'Netto', data: 'NetValue', name: 'NetValue', id: 'NetValueD'},
-                    {title: 'ÁFA', data: 'VatValue', name: 'VatValue', id: 'VatValueD'},
-                    {title: 'Bruttó', data: 'GrossValue', name: 'GrossValue', id: 'GrossValueD'},
-                    {title: 'Pénznem', data: 'CurrencyName', name: 'CurrencyName'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Termék') . "'"; ?>, data: 'ProductName', name: 'ProductName'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Mennyiség') . "'"; ?>, data: 'Quantity', width: '150px', name: 'Quantity', id: 'Quntity'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Me.egys') . "'"; ?>, data: 'QuantityUnitName', name: 'QuantityUnitName'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Egys.ár') . "'"; ?>, data: 'UnitPrice', name: 'UnitPrice', id: 'UnitPrice'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Netto') . "'"; ?>, data: 'NetValue', name: 'NetValue', id: 'NetValueD'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('ÁFA') . "'"; ?>, data: 'VatValue', name: 'VatValue', id: 'VatValueD'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Bruttó') . "'"; ?>, data: 'GrossValue', name: 'GrossValue', id: 'GrossValueD'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Pénznem') . "'"; ?>, data: 'CurrencyName', name: 'CurrencyName'},
                     {title: 'Id', data: 'Id', name: 'Id', id: 'Id'},
                     {title: 'Product', data: 'Product', name: 'Product', id: 'Product'},
                     {title: 'VatRate', data: 'VatRate', name: 'VatRate', id: 'VatRate'},

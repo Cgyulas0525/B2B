@@ -13,7 +13,7 @@
             <div class="box-body">
                 <div class="col-lg-12 col-md-12 col-xs-12">
                     <section class="content-header">
-                        <h4>Belső felhasználók</h4>
+                        <h4>{{ \App\Classes\langClass::trans('Belső felhasználók') }}</h4>
                     </section>
                     @include('flash::message')
                     <div class="clearfix"></div>
@@ -51,10 +51,10 @@
                 columns: [
                     {title: '<a class="btn btn-primary" title="Felvitel" href="{!! route('users.create') !!}"><i class="fa fa-plus-square"></i></a>',
                         data: 'action', sClass: "text-center", width: '150px', name: 'action', orderable: false, searchable: false},
-                    {title: 'Név', data: 'name', name: 'name'},
-                    {title: 'Email', data: 'email', name: 'email'},
-                    {title: 'Kép', data: 'kep', sClass: "text-center", width: '150px', name: 'action', orderable: false, searchable: false},
-                    {title: 'Beosztás', data: 'rgnev', name: 'rgnev'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Név') . "'"; ?>, data: 'name', name: 'name'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Email') . "'"; ?>, data: 'email', name: 'email'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Kép') . "'"; ?>, data: 'kep', sClass: "text-center", width: '150px', name: 'action', orderable: false, searchable: false},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Beosztás') . "'"; ?>, data: 'rgnev', name: 'rgnev'},
                 ]
             });
 

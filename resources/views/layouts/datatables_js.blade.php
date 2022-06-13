@@ -40,156 +40,156 @@
 
         $.extend( true, $.fn.dataTable.defaults, {
             language: {
-                "emptyTable": "Nincs rendelkezésre álló adat",
-                "info": "Találatok: _START_ - _END_ Összesen: _TOTAL_",
-                "infoEmpty": "Nulla találat",
-                "infoFiltered": "(_MAX_ összes rekord közül szűrve)",
+                "emptyTable": <?php echo "'" . App\Classes\langClass::trans("Nincs rendelkezésre álló adat") . "'"; ?>,
+                "info": <?php echo "'" . App\Classes\langClass::trans("Találatok: _START_ - _END_ Összesen: _TOTAL_") . "'"; ?>,
+                "infoEmpty": <?php echo "'" . App\Classes\langClass::trans("Nulla találat") . "'"; ?>,
+                "infoFiltered": <?php echo "'" . App\Classes\langClass::trans("(_MAX_ összes rekord közül szűrve)") . "'"; ?>,
                 "infoThousands": " ",
-                "lengthMenu": "_MENU_ találat oldalanként",
-                "loadingRecords": "Betöltés...",
-                "processing": "Feldolgozás...",
-                "search": "Keresés:",
-                "zeroRecords": "Nincs a keresésnek megfelelő találat",
+                "lengthMenu": <?php echo "'" . App\Classes\langClass::trans("_MENU_ találat oldalanként") . "'"; ?>,
+                "loadingRecords": <?php echo "'" . App\Classes\langClass::trans("Betöltés...") . "'"; ?>,
+                "processing": <?php echo "'" . App\Classes\langClass::trans("Feldolgozás...") . "'"; ?>,
+                "search": <?php echo "'" . App\Classes\langClass::trans("Keresés:") . "'"; ?>,
+                "zeroRecords": <?php echo "'" . App\Classes\langClass::trans("Nincs a keresésnek megfelelő találat") . "'"; ?>,
                 "paginate": {
-                    "first": "Első",
-                    "previous": "Előző",
-                    "next": "Következő",
-                    "last": "Utolsó"
+                    "first": <?php echo "'" . App\Classes\langClass::trans("Első") . "'"; ?>,
+                    "previous": <?php echo "'" . App\Classes\langClass::trans("Előző") . "'"; ?>,
+                    "next": <?php echo "'" . App\Classes\langClass::trans("Következő") . "'"; ?>,
+                    "last": <?php echo "'" . App\Classes\langClass::trans("Utolsó") . "'"; ?>
                 },
                 "aria": {
-                    "sortAscending": ": aktiválja a növekvő rendezéshez",
-                    "sortDescending": ": aktiválja a csökkenő rendezéshez"
+                    "sortAscending": <?php echo "'" . App\Classes\langClass::trans(": aktiválja a növekvő rendezéshez"). "'"; ?>,
+                    "sortDescending": <?php echo "'" . App\Classes\langClass::trans(": aktiválja a csökkenő rendezéshez") . "'"; ?>
                 },
                 "select": {
                     "rows": {
-                        "_": "%d sor kiválasztva",
-                        "1": "1 sor kiválasztva"
+                        "_": <?php echo "'" . App\Classes\langClass::trans("%d sor kiválasztva") . "'"; ?>,
+                        "1": <?php echo "'" . App\Classes\langClass::trans("1 sor kiválasztva") . "'"; ?>
                     },
                     "cells": {
-                        "1": "1 cella kiválasztva",
-                        "_": "%d cella kiválasztva"
+                        "1": <?php echo "'" . App\Classes\langClass::trans("1 cella kiválasztva") . "'"; ?>,
+                        "_": <?php echo "'" . App\Classes\langClass::trans("%d cella kiválasztva") . "'"; ?>
                     },
                     "columns": {
-                        "1": "1 oszlop kiválasztva",
-                        "_": "%d oszlop kiválasztva"
+                        "1": <?php echo "'" . App\Classes\langClass::trans("1 oszlop kiválasztva") . "'"; ?>,
+                        "_": <?php echo "'" . App\Classes\langClass::trans("%d oszlop kiválasztva") . "'"; ?>
                     }
                 },
                 "buttons": {
-                    "colvis": "Oszlopok",
-                    "copy": "Másolás",
-                    "copyTitle": "Vágólapra másolás",
+                    "colvis": <?php echo "'" . App\Classes\langClass::trans("Oszlopok") . "'"; ?>,
+                    "copy": <?php echo "'" . App\Classes\langClass::trans("Másolás") . "'"; ?>,
+                    "copyTitle": <?php echo "'" . App\Classes\langClass::trans("Vágólapra másolás") . "'"; ?>,
                     "copySuccess": {
-                        "_": "%d sor másolva",
-                        "1": "1 sor másolva"
+                        "_": <?php echo "'" . App\Classes\langClass::trans("%d sor másolva") . "'"; ?>,
+                        "1": <?php echo "'" . App\Classes\langClass::trans("1 sor másolva") . "'"; ?>
                     },
                     "collection": "Gyűjtemény",
-                    "colvisRestore": "Oszlopok visszaállítása",
-                    "copyKeys": "Nyomja meg a CTRL vagy u2318 + C gombokat a táblázat adatainak a vágólapra másolásához.<br \/><br \/>A megszakításhoz kattintson az üzenetre vagy nyomja meg az ESC billentyűt.",
+                    "colvisRestore": <?php echo "'" . App\Classes\langClass::trans("Oszlopok visszaállítása") . "'"; ?>,
+                    "copyKeys": <?php echo "'" . App\Classes\langClass::trans("Nyomja meg a CTRL vagy u2318 + C gombokat a táblázat adatainak a vágólapra másolásához.<br \/><br \/>A megszakításhoz kattintson az üzenetre vagy nyomja meg az ESC billentyűt.") . "'"; ?>,
                     "csv": "CSV",
                     "excel": "Excel",
                     "pageLength": {
-                        "-1": "Összes sor megjelenítése",
-                        "_": "%d sor megjelenítése"
+                        "-1": <?php echo "'" . App\Classes\langClass::trans("Összes sor megjelenítése") . "'"; ?>,
+                        "_": <?php echo "'" . App\Classes\langClass::trans("%d sor megjelenítése") . "'"; ?>
                     },
                     "pdf": "PDF",
-                    "print": "Nyomtat"
+                    "print": <?php echo "'" . App\Classes\langClass::trans("Nyomtat") . "'"; ?>
                 },
                 "autoFill": {
-                    "cancel": "Megszakítás",
-                    "fill": "Összes cella kitöltése a következővel: <i>%d<\/i>",
-                    "fillHorizontal": "Cellák vízszintes kitöltése",
-                    "fillVertical": "Cellák függőleges kitöltése"
+                    "cancel": <?php echo "'" . App\Classes\langClass::trans("Megszakítás") . "'"; ?>,
+                    "fill": <?php echo "'" . App\Classes\langClass::trans("Összes cella kitöltése a következővel: <i>%d<\/i>") . "'"; ?>,
+                    "fillHorizontal": <?php echo "'" . App\Classes\langClass::trans("Cellák vízszintes kitöltése") . "'"; ?>,
+                    "fillVertical": <?php echo "'" . App\Classes\langClass::trans("Cellák függőleges kitöltése") . "'"; ?>
                 },
                 "searchBuilder": {
-                    "add": "Feltétel hozzáadása",
+                    "add": <?php echo "'" . App\Classes\langClass::trans("Feltétel hozzáadása") . "'"; ?>,
                     "button": {
-                        "0": "Keresés konfigurátor",
-                        "_": "Keresés konfigurátor (%d)"
+                        "0": <?php echo "'" . App\Classes\langClass::trans("Keresés konfigurátor") . "'"; ?>,
+                        "_": <?php echo "'" . App\Classes\langClass::trans("Keresés konfigurátor (%d)") . "'"; ?>
                     },
-                    "clearAll": "Összes feltétel törlése",
-                    "condition": "Feltétel",
+                    "clearAll": <?php echo "'" . App\Classes\langClass::trans("Összes feltétel törlése") . "'"; ?>,
+                    "condition": <?php echo "'" . App\Classes\langClass::trans("Feltétel") . "'"; ?>,
                     "conditions": {
                         "date": {
-                            "after": "Után",
-                            "before": "Előtt",
-                            "between": "Között",
-                            "empty": "Üres",
-                            "equals": "Egyenlő",
-                            "not": "Nem",
-                            "notBetween": "Kívül eső",
-                            "notEmpty": "Nem üres"
+                            "after": <?php echo "'" . App\Classes\langClass::trans("Után") . "'"; ?>,
+                            "before": <?php echo "'" . App\Classes\langClass::trans("Előtt") . "'"; ?>,
+                            "between": <?php echo "'" . App\Classes\langClass::trans("Között") . "'"; ?>,
+                            "empty": <?php echo "'" . App\Classes\langClass::trans("Üres") . "'"; ?>,
+                            "equals": <?php echo "'" . App\Classes\langClass::trans("Egyenlő") . "'"; ?>,
+                            "not": <?php echo "'" . App\Classes\langClass::trans("Nem") . "'"; ?>,
+                            "notBetween": <?php echo "'" . App\Classes\langClass::trans("Kívül eső") . "'"; ?>,
+                            "notEmpty": <?php echo "'" . App\Classes\langClass::trans("Nem üres") . "'"; ?>
                         },
                         "number": {
-                            "between": "Között",
-                            "empty": "Üres",
-                            "equals": "Egyenlő",
-                            "gt": "Nagyobb mint",
-                            "gte": "Nagyobb vagy egyenlő mint",
-                            "lt": "Kissebb mint",
-                            "lte": "Kissebb vagy egyenlő mint",
-                            "not": "Nem",
-                            "notBetween": "Kívül eső",
-                            "notEmpty": "Nem üres"
+                            "between": <?php echo "'" . App\Classes\langClass::trans("Között") . "'"; ?>,
+                            "empty": <?php echo "'" . App\Classes\langClass::trans("Üres") . "'"; ?>,
+                            "equals": <?php echo "'" . App\Classes\langClass::trans("Egyenlő") . "'"; ?>,
+                            "gt": <?php echo "'" . App\Classes\langClass::trans("Nagyobb mint") . "'"; ?>,
+                            "gte": <?php echo "'" . App\Classes\langClass::trans("Nagyobb vagy egyenlő mint") . "'"; ?>,
+                            "lt": <?php echo "'" . App\Classes\langClass::trans("Kissebb mint") . "'"; ?>,
+                            "lte": <?php echo "'" . App\Classes\langClass::trans("Kissebb vagy egyenlő mint") . "'"; ?>,
+                            "not": <?php echo "'" . App\Classes\langClass::trans("Nem") . "'"; ?>,
+                            "notBetween": <?php echo "'" . App\Classes\langClass::trans("Kívül eső") . "'"; ?>,
+                            "notEmpty": <?php echo "'" . App\Classes\langClass::trans("Nem üres") . "'"; ?>
                         },
                         "string": {
-                            "contains": "Tartalmazza",
-                            "empty": "Üres",
-                            "endsWith": "Végződik",
-                            "equals": "Egyenlő",
-                            "not": "Nem",
-                            "notEmpty": "Nem üres",
-                            "startsWith": "Kezdődik"
+                            "contains": <?php echo "'" . App\Classes\langClass::trans("Tartalmazza") . "'"; ?>,
+                            "empty": <?php echo "'" . App\Classes\langClass::trans("Üres") . "'"; ?>,
+                            "endsWith": <?php echo "'" . App\Classes\langClass::trans("Végződik") . "'"; ?>,
+                            "equals": <?php echo "'" . App\Classes\langClass::trans("Egyenlő") . "'"; ?>,
+                            "not": <?php echo "'" . App\Classes\langClass::trans("Nem") . "'"; ?>,
+                            "notEmpty": <?php echo "'" . App\Classes\langClass::trans("Nem üres") . "'"; ?>,
+                            "startsWith": <?php echo "'" . App\Classes\langClass::trans("Kezdődik") . "'"; ?>
                         }
                     },
-                    "data": "Adat",
-                    "deleteTitle": "Feltétel törlése",
-                    "logicAnd": "És",
-                    "logicOr": "Vagy",
+                    "data": <?php echo "'" . App\Classes\langClass::trans("Adat") . "'"; ?>,
+                    "deleteTitle": <?php echo "'" . App\Classes\langClass::trans("Feltétel törlése") . "'"; ?>,
+                    "logicAnd": <?php echo "'" . App\Classes\langClass::trans("És") . "'"; ?>,
+                    "logicOr": <?php echo "'" . App\Classes\langClass::trans("Vagy") . "'"; ?>,
                     "title": {
-                        "0": "Keresés konfigurátor",
-                        "_": "Keresés konfigurátor (%d)"
+                        "0": <?php echo "'" . App\Classes\langClass::trans("Keresés konfigurátor") . "'"; ?>,
+                        "_": <?php echo "'" . App\Classes\langClass::trans("Keresés konfigurátor (%d)") . "'"; ?>
                     },
-                    "value": "Érték"
+                    "value": <?php echo "'" . App\Classes\langClass::trans("Érték") . "'"; ?>
                 },
                 "searchPanes": {
-                    "clearMessage": "Szűrők törlése",
+                    "clearMessage": <?php echo "'" . App\Classes\langClass::trans("Szűrők törlése") . "'"; ?>,
                     "collapse": {
-                        "0": "Szűrőpanelek",
-                        "_": "Szűrőpanelek (%d)"
+                        "0": <?php echo "'" . App\Classes\langClass::trans("Szűrőpanelek") . "'"; ?>,
+                        "_": <?php echo "'" . App\Classes\langClass::trans("Szűrőpanelek (%d)") . "'"; ?>
                     },
                     "count": "{total}",
                     "countFiltered": "{shown} ({total})",
-                    "emptyPanes": "Nincsenek szűrőpanelek",
-                    "loadMessage": "Szűrőpanelek betöltése",
-                    "title": "Aktív szűrőpanelek: %d"
+                    "emptyPanes": <?php echo "'" . App\Classes\langClass::trans("Nincsenek szűrőpanelek") . "'"; ?>,
+                    "loadMessage": <?php echo "'" . App\Classes\langClass::trans("Szűrőpanelek betöltése") . "'"; ?>,
+                    "title": <?php echo "'" . App\Classes\langClass::trans("Aktív szűrőpanelek: %d") . "'"; ?>
                 },
                 "datetime": {
-                    "previous": "Előző",
-                    "next": "Következő",
-                    "hours": "Óra",
-                    "minutes": "Perc",
-                    "seconds": "Másodperc",
+                    "previous": <?php echo "'" . App\Classes\langClass::trans("Előző") . "'"; ?>,
+                    "next": <?php echo "'" . App\Classes\langClass::trans("Következő") . "'"; ?>,
+                    "hours": <?php echo "'" . App\Classes\langClass::trans("Óra") . "'"; ?>,
+                    "minutes": <?php echo "'" . App\Classes\langClass::trans("Perc") . "'"; ?>,
+                    "seconds": <?php echo "'" . App\Classes\langClass::trans("Másodperc") . "'"; ?>,
                     "amPm": [
-                        "de.",
-                        "du."
+                        <?php echo "'" . App\Classes\langClass::trans("de.") . "'"; ?>,
+                        <?php echo "'" . App\Classes\langClass::trans("du.") . "'"; ?>
                     ]
                 },
                 "editor": {
-                    "close": "Bezárás",
+                    "close": <?php echo "'" . App\Classes\langClass::trans("Bezárás") . "'"; ?>,
                     "create": {
-                        "button": "Új",
-                        "title": "Új",
-                        "submit": "Létrehozás"
+                        "button": <?php echo "'" . App\Classes\langClass::trans("Új") . "'"; ?>,
+                        "title": <?php echo "'" . App\Classes\langClass::trans("Új") . "'"; ?>,
+                        "submit": <?php echo "'" . App\Classes\langClass::trans("Létrehozás") . "'"; ?>
                     },
                     "edit": {
-                        "button": "Módosítás",
-                        "title": "Módosítás",
-                        "submit": "Módosítás"
+                        "button": <?php echo "'" . App\Classes\langClass::trans("Módosítás") . "'"; ?>,
+                        "title": <?php echo "'" . App\Classes\langClass::trans("Módosítás") . "'"; ?>,
+                        "submit": <?php echo "'" . App\Classes\langClass::trans("Módosítás") . "'"; ?>
                     },
                     "remove": {
-                        "button": "Törlés",
-                        "title": "Törlés",
-                        "submit": "Törlés"
+                        "button": <?php echo "'" . App\Classes\langClass::trans("Törlés") . "'"; ?>,
+                        "title": <?php echo "'" . App\Classes\langClass::trans("Törlés") . "'"; ?>,
+                        "submit": <?php echo "'" . App\Classes\langClass::trans("Törlés") . "'"; ?>
                     }
                 }
             },

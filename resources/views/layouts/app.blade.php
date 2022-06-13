@@ -66,6 +66,11 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
+            <select class="form-control changeLang">
+                @foreach(App\Models\Languages::all() as $language)
+                    <option value={{ $language->shortname }} {{ session()->get('locale') ==  $language->shortname ? 'selected' : '' }}>{{ $language->name }}</option>
+                @endforeach
+            </select>
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                     @if (!empty(session('user_picture')))
@@ -75,10 +80,10 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <li class="user-footer">
-                        <a href="{{ route('profil', myUser::user()->id) }}" class="btn btn-default btn-flat">Profil</a>
+                        <a href="{{ route('profil', myUser::user()->id) }}" class="btn btn-default btn-flat">{{ App\Classes\langClass::trans('Profil') }}</a>
                         <a href="#" class="btn btn-default btn-flat float-right"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Kilépés
+                            {{ App\Classes\langClass::trans('Kilépés') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
@@ -92,7 +97,7 @@
                 <li class="nav-item dropdown user-menu">
                     @if (!empty(shoppingCartClass::openedShoppingCart(myUser::user()->customercontact_id)))
                         <a href="{{ route('shoppingCarts.edit', shoppingCartClass::openedShoppingCart(myUser::user()->customercontact_id)->Id) }}" class="btn btn-default btn-flat">
-                            <h3 class="d-none d-md-inline"><i class="fas fa-shopping-cart"></i> Kosár</h3>
+                            <h3 class="d-none d-md-inline"><i class="fas fa-shopping-cart"></i> {{ App\Classes\langClass::trans('Kosár') }}</h3>
                         </a>
                     @endif
 {{--                    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">--}}
@@ -173,6 +178,12 @@
 
     $("input[data-bootstrap-switch]").each(function(){
         $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    });
+
+    var url = "{{ route('lan.change') }}";
+
+    $('.changeLang').change(function(){
+        window.location.href = url + "?lang=" + $(this).val();
     });
 </script>
 

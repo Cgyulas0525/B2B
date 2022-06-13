@@ -315,7 +315,7 @@
 
     .mylabel8{
         margin-top: 7px;
-        font-size: 0.8em;
+        font-size: 1em;
     }
 
     .cellLabel {
