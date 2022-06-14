@@ -89,6 +89,13 @@
                 </a>
             </li>
         @endif
+        <li class="nav-item">
+            <a href="{{ route('languages.index') }}"
+               class="nav-link {{ Request::is('languages*') ? 'active' : '' }}">
+                <i class="fas fa-globe"></i>
+                <p>{{ \App\Classes\langClass::trans('Nyelvek') }}</p>
+            </a>
+        </li>
     @endif
 @endif
 
@@ -98,4 +105,6 @@
 {{--        <p>Shopping Cart Details</p>--}}
 {{--    </a>--}}
 {{--</li>--}}
+
+
 

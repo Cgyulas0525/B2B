@@ -38,5 +38,6 @@ Route::get('api/excelImportIdDelete', [ApiController::class, 'excelImportIdDelet
 Route::post('api/datatableSave', [ApiController::class, 'datatableSave'])->name('datatableSave');
 Route::post('api/datatableLoad', [ApiController::class, 'datatableLoad'])->name('datatableLoad');
 Route::get('api/makeCustomerContactFavoriteProduct', [ApiController::class, 'makeCustomerContactFavoriteProduct'])->name('makeCustomerContactFavoriteProduct');
+Route::get('api/itemTraslation', [ApiController::class, 'itemTraslation'])->name('itemTraslation');
 
 

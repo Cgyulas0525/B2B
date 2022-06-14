@@ -15,6 +15,8 @@ use App\Http\Controllers\ShoppingCartDetailController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\CustomerContactFavoriteProductController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\LanguagesController;
+use App\Http\Controllers\TranslationsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -104,3 +106,10 @@ Route::get('destroyMe/{id}', [CustomerContactFavoriteProductController::class, '
 
 
 Route::get('lan-change', [LanguageController::class, 'langChange'])->name('lan.change');
+
+
+Route::resource('languages', App\Http\Controllers\LanguagesController::class);
+Route::get('languageOn/{id}', [LanguagesController::class, 'languageOn'])->name('languageOn');
+
+Route::resource('translations', App\Http\Controllers\TranslationsController::class);
+Route::get('indexLanguage/{language}', [TranslationsController::class, 'indexLanguage'])->name('indexLanguage');

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class Translations
  * @package App\Models
- * @version June 7, 2022, 11:35 am CEST
+ * @version June 14, 2022, 8:50 am CEST
  *
  * @property string $huname
  * @property string $language
@@ -55,9 +55,9 @@ class Translations extends Model
      * @var array
      */
     public static $rules = [
-        'huname' => 'required|string|max:4000',
+        'huname' => 'required|string|max:500',
         'language' => 'required|string|max:2',
-        'name' => 'required|string|max:4000',
+        'name' => 'required|string|max:500',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'

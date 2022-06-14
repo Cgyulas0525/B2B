@@ -20,12 +20,18 @@ use App\Models\ShoppingCartDetail;
 use App\Models\Product;
 use App\Models\Vat;
 use App\Models\CustomerOrderDetail;
+use App\Models\Translations;
 
 use App\Imports\excelImportImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ApiController extends Controller
 {
+
+    public function itemTraslation(Request $request)
+    {
+        Translations::where('id', $request->get('id'))->update(['name' => $request->get('name')]);
+    }
 
     public function excelImportDDW(Request $request)
     {

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class Languages
  * @package App\Models
- * @version June 7, 2022, 10:58 am CEST
+ * @version June 14, 2022, 8:50 am CEST
  *
  * @property string $shortname
  * @property string $name
@@ -21,7 +21,7 @@ class Languages extends Model
     use HasFactory;
 
     public $table = 'languages';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -59,5 +59,13 @@ class Languages extends Model
         'deleted_at' => 'nullable'
     ];
 
-    
+    protected $append = [
+        'DetailNumber'
+    ];
+
+    public function getDetailNumberAttribute() {
+        return Translations::where('language', $this->shortname)->get()->count();
+    }
+
+
 }
