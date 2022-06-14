@@ -67,7 +67,7 @@
 
         <ul class="navbar-nav ml-auto">
             <select class="form-control changeLang">
-                @foreach(App\Models\Languages::all() as $language)
+                @foreach(App\Classes\langClass::liveLanguages() as $language)
                     <option value={{ $language->shortname }} {{ session()->get('locale') ==  $language->shortname ? 'selected' : '' }}>{{ $language->name }}</option>
                 @endforeach
             </select>
