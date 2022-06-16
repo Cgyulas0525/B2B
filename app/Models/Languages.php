@@ -60,12 +60,27 @@ class Languages extends Model
     ];
 
     protected $append = [
-        'DetailNumber'
+        'DetailNumber',
+        'TranslatedNumber',
+        'UntranslatedNumber',
     ];
 
     public function getDetailNumberAttribute() {
         return Translations::where('language', $this->shortname)->get()->count();
     }
 
+    public function getTranslatedNumberAttribute() {
+        return Translations::where('language', $this->shortname)
+                        ->whereColumn('huname', '!=', 'name')
+                        ->get()
+                        ->count();
+    }
+
+    public function getUntranslatedNumberAttribute() {
+        return Translations::where('language', $this->shortname)
+                        ->whereColumn('huname', '=', 'name')
+                        ->get()
+                        ->count();
+    }
 
 }

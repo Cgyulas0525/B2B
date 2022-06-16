@@ -10,7 +10,7 @@
 
     function swMove(szoveg) {
         swal.fire({
-            title: "Hiba",
+            title: <?php echo "'" . App\Classes\langClass::trans("Hiba") . "'"; ?>,
             text: szoveg,
             icon: "error",
             showClass: {

@@ -110,6 +110,9 @@ Route::get('lan-change', [LanguageController::class, 'langChange'])->name('lan.c
 
 Route::resource('languages', App\Http\Controllers\LanguagesController::class);
 Route::get('languageOn/{id}', [LanguagesController::class, 'languageOn'])->name('languageOn');
+Route::get('languageOff/{id}', [LanguagesController::class, 'languageOff'])->name('languageOff');
+Route::get('beforeOn/{id}', [LanguagesController::class, 'beforeOn'])->name('beforeOn');
+Route::get('beforeOff/{id}', [LanguagesController::class, 'beforeOff'])->name('beforeOff');
 
 Route::resource('translations', App\Http\Controllers\TranslationsController::class);
 Route::get('indexLanguage/{language}', [TranslationsController::class, 'indexLanguage'])->name('indexLanguage');
