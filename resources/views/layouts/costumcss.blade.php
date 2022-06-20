@@ -1,4 +1,31 @@
 <style>
+    .swCancelButton {
+        background-repeat: no-repeat;
+        background-size: 98px 84px;
+        /*background-color: red;*/
+        width: 100px;
+        height: 86px;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size:20px;
+        font-family: 'Palatino, URW Palladio L, serif'
+
+    }
+
+    .swConfirmButton {
+        background-repeat: no-repeat;
+        background-size: 98px 84px;
+        width: 100px;
+        height: 86px;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size:20px;
+        font-family: 'Palatino, URW Palladio L, serif'
+
+    }
+
     .hide-col {
         width: 0px !important;
         height: 0px !important;

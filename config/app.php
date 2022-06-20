@@ -178,6 +178,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         \InfyOm\GeneratorBuilder\GeneratorBuilderServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
     ],
 
@@ -236,6 +237,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
         // saját osztályok
 

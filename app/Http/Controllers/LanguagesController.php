@@ -19,6 +19,7 @@ use myUser;
 use Alert;
 use URL;
 use App\Classes\langClass;
+use App\Classes\SWAlertClass;
 
 class LanguagesController extends AppBaseController
 {
@@ -35,6 +36,8 @@ class LanguagesController extends AppBaseController
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('DetailNumber', function($data) { return $data->DetailNumber; })
+            ->addColumn('TranslatedNumber', function($data) { return $data->TranslatedNumber; })
+            ->addColumn('UntranslatedNumber', function($data) { return $data->UntranslatedNumber; })
             ->addColumn('action', function($row){
                 $btn = '';
                 if ($row->DetailNumber == 0) {
@@ -165,13 +168,7 @@ class LanguagesController extends AppBaseController
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function beforeOn($id) {
-        Alert::question('Bekapcsolja a nyelvet?')
-            ->showCancelButton($btnText = '<a class="add-padding" href="'. URL::asset('/languages') .'">' . langClass::trans('Kilép') .'</a>', $btnColor = '#eff0eb')
-            ->showConfirmButton(
-                $btnText = '<a class="add-padding" href="'. URL::to('/languageOn/'.$id) .'">' . langClass::trans('Bekapcsol') .'</a>', // here is class for link
-                $btnColor = '#eba134',
-            )->autoClose(false);
-
+        SWAlertClass::choice($id, 'Biztos, hogy be akarja kapcsolni a nyelvet?', '/languages', 'Kilép', '/languageOn/'.$id, 'Bekapcsol');
         return view('languages.show')->with('languages', $this->languagesRepository->find($id));
     }
 
@@ -181,14 +178,7 @@ class LanguagesController extends AppBaseController
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function beforeOff($id) {
-        Alert::question('Biztos, hogy ki akarja kapcsolni a nyelvet?')
-            ->showCancelButton($btnText = '<a class="add-padding" href="'. URL::asset('/languages') .'">'. langClass::trans('Kilép') .'</a>',
-                               $btnColor = '#eff0eb')
-            ->showConfirmButton(
-                $btnText = '<a class="add-padding" href="'. URL::to('/languageOff/'.$id) .'">' . langClass::trans('Kikapcsol') .'</a>', // here is class for link
-                $btnColor = '#eba134',
-            )->autoClose(false);
-
+        SWAlertClass::choice($id, 'Biztos, hogy ki akarja kapcsolni a nyelvet?', '/languages', 'Kilép', '/languageOff/'.$id, 'Kikapcsol');
         return view('languages.show')->with('languages', $this->languagesRepository->find($id));
     }
 

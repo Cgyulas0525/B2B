@@ -53,6 +53,8 @@
                     {title: <?php echo "'" . App\Classes\langClass::trans('Név') . "'"; ?>, data: 'shortname', name: 'shortname'},
                     {title: <?php echo "'" . App\Classes\langClass::trans('Nemzetiség') . "'"; ?>, data: 'name', name: 'name'},
                     {title: <?php echo "'" . App\Classes\langClass::trans('Tétel') . "'"; ?>, data: 'DetailNumber', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'DetailNumber'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Fordított') . "'"; ?>, data: 'TranslatedNumber', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'TranslatedNumber'},
+                    {title: <?php echo "'" . App\Classes\langClass::trans('Fordítatlan') . "'"; ?>, data: 'UntranslatedNumber', render: $.fn.dataTable.render.number( '.', ',', 0), sClass: "text-right", width:'75px', name: 'UntranslatedNumber'},
                 ]
             });
 
